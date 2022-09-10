@@ -1,0 +1,2 @@
+class PostedContent < ApplicationRecord
+end
