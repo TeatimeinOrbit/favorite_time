@@ -1,10 +1,13 @@
-<% unless user_signed_in? %>
-  <%= link_to new_user_session_path do %>
-    ログイン
-  <% end %>
+<header>
+  <% unless user_signed_in? %>
 
-  <%= link_to public_abobut_path do %>
-    about
-  <% end %>
+    <%= link_to new_user_session_path do %>
+      ログイン
+    <% end %>
 
-<% end %>
+    <%= link_to public_abobut_path do %>
+      about
+    <% end %>
+
+  <% end %>
+</header>
