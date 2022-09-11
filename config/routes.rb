@@ -13,10 +13,12 @@ Rails.application.routes.draw do
     sessions: 'admin/sessions'
   }
 
+  root to: 'public/homes#top'
+
   #ユーザー用
   namespace :public do
-    root to: 'homes#top'
     get 'abobut' => 'homes#about'
+    resources :users, only: [:show, :edit]
     resources :posted_contents, only: [:index, :show]
   end
 

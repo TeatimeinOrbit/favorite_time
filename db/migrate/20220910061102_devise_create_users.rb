@@ -32,8 +32,9 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.1]
       # t.string   :unlock_token # Only if unlock strategy is :email or :both
       # t.datetime :locked_at
 
-      ##付け足したカラム(名前, 退会フラグ)
+      ##付け足したカラム(名前, 自己紹介, 退会フラグ)
       t.string :name, null: false
+      t.string :introduction
       t.boolean :is_deleted, null: false, default: false
 
       t.timestamps null: false
