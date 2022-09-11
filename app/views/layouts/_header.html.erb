@@ -1,10 +1,18 @@
-<% unless user_signed_in? %>
-  <%= link_to new_user_session_path do %>
-    ログイン
-  <% end %>
-
-  <%= link_to public_abobut_path do %>
-    about
-  <% end %>
-
-<% end %>
+<header>
+  <nav>
+    <ul>
+    <% if user_signed_in? %>
+      <li>
+        <%= link_to "ログアウト", destroy_user_session, method: :delete %>
+      </li>
+    <% else %>
+      <li>
+        <%= link_to "ログイン", new_user_session_path %>
+      </li>
+      <li>
+        <%= link_to "About", public_abobut_path %>
+      </li>
+    <% end %>
+    </ul>
+  </nav>
+</header>
