@@ -1,18 +1,42 @@
 <header>
   <nav>
     <ul>
-    <% if user_signed_in? %>
+    <!--"ログインしている" かつ "ユーザーマイページ" -->
+    <% if @user.id == current_user.id %>
+      <li>
+        <%= link_to "Top", root_path %>
+      </li>
+      <li>
+        <%= link_to "About", public_abobut_path %>
+      </li>
       <li>
         <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
       </li>
+
+    <!--"ログインしている" かつ "編集ページ" -->
+    <% elsif request.path.include?("edit") %>
+      <li>
+        <%= link_to "Top", root_path %>
+      </li>
+
+    <!--Sign_inページ-->
+    <% elsif request.path.include?("sign_in") %>
+      <li>
+        <%= link_to "Top", root_path %>
+      </li>
+
+    <!--"ログインしていない"-->
     <% else %>
+      <li>
+        <%= link_to "Top", root_path %>
+      </li>
       <li>
         <%= link_to "ログイン", new_user_session_path %>
       </li>
       <li>
         <%= link_to "About", public_abobut_path %>
       </li>
-    <% end %>
+    <% end %> <!--ログイン中、通常ページでは表示なし -->
     </ul>
   </nav>
 </header>

@@ -2,11 +2,11 @@
 
 class Public::RegistrationsController < Devise::RegistrationsController
   before_action :configure_sign_up_params, only: [:create]
-  # before_action :configure_account_update_params, only: [:update]
+  #before_action :configure_account_update_params, only: [:update]
 
   # Sign_up後のリダイレクト先を指定(ユーザープロフィール編集画面へ)
   def after_sign_up_path_for(resource_or_scope)
-    edit_public_user_path(user_id)
+    edit_public_user_path(current_user.id)
   end
 
   # GET /resource/sign_up
@@ -51,9 +51,9 @@ class Public::RegistrationsController < Devise::RegistrationsController
   end
 
   # If you have extra params to permit, append them to the sanitizer.
-  # def configure_account_update_params
-  #   devise_parameter_sanitizer.permit(:account_update, keys: [:attribute])
-  # end
+  #def configure_account_update_params
+    #devise_parameter_sanitizer.permit(:account_update, keys: [:attribute, :name, :introduction])
+  #end
 
   # The path used after sign up.
   # def after_sign_up_path_for(resource)
