@@ -22,6 +22,12 @@ Rails.application.routes.draw do
     resources :posted_contents, only: [:new, :create, :index, :show]
   end
 
+   #管理者用
+  namespace :admin do
+    root to: "homes#top"
+    resources :categories, only: [:edit, :create, :index, :update, :destroy]
+  end
+
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
