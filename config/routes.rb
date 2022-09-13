@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   namespace :public do
     get 'abobut' => 'homes#about'
     resources :users, only: [:show, :edit, :update]
-    resources :posted_contents, only: [:index, :show]
+    resources :posted_contents, only: [:new, :create, :index, :show]
   end
 
 
