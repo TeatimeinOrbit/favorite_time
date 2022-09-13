@@ -1,5 +1,5 @@
 class Category < ApplicationRecord
 
-  belongs_to :posted_content
+  has_many :posted_contents
 
 end
