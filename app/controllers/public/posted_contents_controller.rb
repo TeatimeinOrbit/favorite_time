@@ -17,6 +17,7 @@ class Public::PostedContentsController < ApplicationController
   end
 
   def index
+    
   end
 
   def show

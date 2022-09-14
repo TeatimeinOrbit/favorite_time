@@ -61,3 +61,6 @@ gem 'pry-rails'
 
 gem 'net-smtp'
 
+gem 'ransack'
+
+
