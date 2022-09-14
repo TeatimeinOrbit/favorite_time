@@ -26,6 +26,7 @@ Rails.application.routes.draw do
   namespace :admin do
     root to: "homes#top"
     resources :categories, only: [:edit, :create, :index, :update, :destroy]
+    resources :time_of_days, only: [:edit, :create, :index, :update, :destroy]
   end
 
 
