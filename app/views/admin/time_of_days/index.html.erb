@@ -1,0 +1,30 @@
+<h2>時間帯一覧</h2>
+
+<!--時間帯の新規作成-->
+<%= form_with model: @time_of_day, url: admin_time_of_days_path, method: :post do |f| %>
+  <%= render 'time_of_day_form', time_of_day: @time_of_day, f: f %>
+<% end %>
+
+<!--時間帯一覧-->
+  <!--1件も登録されていなければ、"時間帯未登録"と表示 -->
+<div>
+  <% unless @time_of_days.present? %>
+    <p>時間帯未登録</p>
+  <% else %>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>時間帯名</th>
+        </tr>
+      </thead>
+      <% @time_of_days.each do |time_of_day| %>
+      <tboby>
+        <tr>
+          <td><%= time_of_day.name %></td>
+          <td><%= link_to "編集", edit_admin_time_of_day_path(time_of_day.id) %></td>
+        </tr>
+      </tboby>
+      <% end %>
+    </table>
+  <% end %>
+</div>
