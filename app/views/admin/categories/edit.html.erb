@@ -2,7 +2,7 @@
 
 <!--カテゴリー編集-->
 <%= form_with model: @category, url: admin_category_path, method: :patch do |f| %>
-  <%= render 'category_form', category: @category, f: f %>
+  <%= render 'form', category: @category, f: f %>
 <% end %>
 
 <div>
