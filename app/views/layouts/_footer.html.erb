@@ -1,0 +1,16 @@
+<footer>
+  <!--"ログインしている" かつ "ユーザーマイページ"-->
+  <% if request.path.include?("/public/users/#{current_user.id}") %>
+    <%= link_to "新規投稿", new_public_posted_content_path %>
+  <!--"ユーザーマイページでも、編集ページでもないログイン状態"-->
+  <%# elsif !request.path.include?("edit") %>
+
+  <!--"Sign_in, Sign_up画面以外のログアウト状態"-->
+  <%# elsif !request.path.include?("sign") %>
+
+  <!--"残る条件の、Sign_in, Sign_up画面では何も表示しない"-->
+  <%# else %>
+
+  <% end %>
+
+</footer>
