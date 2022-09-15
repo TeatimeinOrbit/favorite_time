@@ -20,6 +20,7 @@ Rails.application.routes.draw do
     get 'abobut' => 'homes#about'
     resources :users, only: [:show, :edit, :update]
     resources :posted_contents, only: [:new, :create, :index, :show] do
+      resource :favorites, only: [:create, :destroy]
       collection do
         get 'search'
       end
