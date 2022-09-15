@@ -1,8 +1,11 @@
 <h1>show page</h1>
 
   <%= @posted_content.title %>
-  <%= @posted_content.time_of_day_id %>
-  <%= @posted_content.category_id %>
+  <%= @posted_content.time_of_day.name %>
+  <%= @posted_content.category.name %>
   <%= @posted_content.user.name %>
-  <%= image_tag @posted_content.image %>
+  <% if @posted_content.image.present? %>
+    <%= image_tag @posted_content.image %>
+  <% end %>
+  <%= @posted_content.sentence %>
 

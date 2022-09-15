@@ -1,0 +1,13 @@
+<h2>検索結果ページ</h2>
+
+<!--投稿検索フォーム-->
+
+<%= search_form_for @q, url: search_public_posted_contents_path do |f| %>
+  <% f.label :category, 'カテゴリー' %>
+  <%= f.collection_check_boxes :category_id, @categories, :id, :name %>
+<%= f.submit '検索' %>
+<% end %>
+
+<% @results.each do |result| %>
+  <%= result.title %>
+<% end %>q
