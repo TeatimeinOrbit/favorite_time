@@ -3,6 +3,7 @@
   <% if request.path.include?("/public/users/#{current_user.id}") %>
     <%= link_to "新規投稿", new_public_posted_content_path %>
     <%= link_to "検索", search_public_posted_contents_path %>
+    
   <!--"ユーザーマイページでも、編集ページでもないログイン状態"-->
   <% elsif !request.path.include?("edit") %>
     <%= link_to "検索", search_public_posted_contents_path %>

@@ -9,3 +9,6 @@
   <% end %>
   <%= @posted_content.sentence %>
 
+  <div id="favorite-btn_<%=@posted_content.id %>">
+    <%= render 'public/favorites/favorite', posted_content: @posted_content %>
+  </div>

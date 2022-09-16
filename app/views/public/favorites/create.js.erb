@@ -1,1 +1,1 @@
-$("#favorite_btn_<%= @posted_content.id %>").html("<%= j(render "favorites/favorite", posted_content: @posted_content) %>");
+$("#favorite-btn_<%= @posted_content.id %>").html("<%= j(render "public/favorites/favorite", posted_content: @posted_content) %>");

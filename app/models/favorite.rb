@@ -1,6 +1,6 @@
 class Favorite < ApplicationRecord
 
-  belongs_to :user_params
-  belongs_to :posted_contents
+  belongs_to :user
+  belongs_to :posted_content
 
 end
