@@ -1,15 +1,23 @@
 <h2>検索結果ページ</h2>
 
+<div>
+  <% @results.each do |result| %>
+    <%= result.title %>
+  <% end %>
+</div>
+
 <!--投稿検索フォーム-->
-
 <%= search_form_for @q, url: search_public_posted_contents_path do |f| %>
-  <% f.label :category, 'カテゴリー' %>
-  <%= f.collection_check_boxes :category_id, @categories, :id, :name, include_hidden: false %>
-<%= f.submit '検索' %>
-<% end %>
-
-
-
-<% @results.each do |result| %>
-  <%= result.title %>
+<div>
+  <%= f.label :category_id_in, 'カテゴリー' %><br>
+  <%= f.collection_check_boxes :category_id_in, @categories, :id, :name %>
+</div>
+<div>
+  <%= f.label :time_of_day_id_in, '時間帯' %></br>
+  <%= f.collection_check_boxes :time_of_day_id_in, @time_of_days, :id, :name %>
+</div>
+  <%= f.text_field :title_or_sentence_cont_any %>
+<div>
+  <%= f.submit '検索' %>
+</div>
 <% end %>
