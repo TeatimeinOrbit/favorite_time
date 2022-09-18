@@ -1,5 +1,5 @@
 class Public::PostedContentsController < ApplicationController
-  before_action :set_ransack, only: [:index, :search]
+  #before_action :set_ransack, only: [:index, :search]
 
   def new
     @posted_content = PostedContent.new
@@ -23,9 +23,15 @@ class Public::PostedContentsController < ApplicationController
 
   def show
     @posted_content = PostedContent.find(params[:id])
+    @posted_comment = PostedComment.new
   end
 
   def search
+    if params[:q].blank?
+      set_ransack
+    else
+      @q = PostedContent.ransack(params[:q])
+    end
     @results = @q.result
     @categories = Category.all
   end
@@ -42,5 +48,8 @@ class Public::PostedContentsController < ApplicationController
     @q = PostedContent.ransack(params[:q])
   end
 
+  def search_params
+    params.require(:q).permit({:category_id => []})
+  end
 
 end
