@@ -23,6 +23,7 @@ class Public::PostedContentsController < ApplicationController
 
   def show
     @posted_content = PostedContent.find(params[:id])
+    @posted_comment = PostedComment.new
   end
 
   def search

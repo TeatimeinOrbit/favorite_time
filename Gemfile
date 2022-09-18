@@ -65,6 +65,8 @@ gem 'net-smtp'
 gem 'ransack'
 
 gem 'jquery-rails'
+# Active Storageにて、画像加工用
+gem "image_processing", ">= 1.2"
 
 
 

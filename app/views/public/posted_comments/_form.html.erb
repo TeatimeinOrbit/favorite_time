@@ -1,0 +1,7 @@
+<!--コメント投稿フォーム-->
+<%= form_with(model: [posted_content, posted_comment], url: public_posted_content_posted_comments_path(posted_content.id), local: false) do |f| %>
+  <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
+  <%= f.submit "送信する" %>
+<% end %>
+
+

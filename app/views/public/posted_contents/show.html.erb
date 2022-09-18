@@ -12,3 +12,15 @@
   <div id="favorite-btn_<%=@posted_content.id %>">
     <%= render 'public/favorites/favorite', posted_content: @posted_content %>
   </div>
+
+
+
+<!--コメント投稿フォーム-->
+<div id="comment_form">
+  <%= render 'public/posted_comments/form', posted_content: @posted_content, posted_comment: @posted_comment %>
+</div>
+
+<!--コメント一覧-->
+<div id="comments_index">
+  <%= render 'public/posted_comments/index', posted_content: @posted_content %>
+</div>
