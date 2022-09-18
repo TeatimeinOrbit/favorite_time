@@ -1,5 +1,5 @@
 class Public::PostedContentsController < ApplicationController
-  #before_action :set_ransack, only: [:index, :search]
+  before_action :set_ransack, only: [:index, :search]
 
   def new
     @posted_content = PostedContent.new
@@ -27,13 +27,10 @@ class Public::PostedContentsController < ApplicationController
   end
 
   def search
-    if params[:q].blank?
-      set_ransack
-    else
-      @q = PostedContent.ransack(params[:q])
-    end
+
     @results = @q.result
     @categories = Category.all
+    @time_of_days = TimeOfDay.all
   end
 
 
@@ -44,12 +41,9 @@ class Public::PostedContentsController < ApplicationController
     params.require(:posted_content).permit(:title, :user_id, :sentence, :category_id, :time_of_day_id, :image)
   end
 
+
   def set_ransack
     @q = PostedContent.ransack(params[:q])
-  end
-
-  def search_params
-    params.require(:q).permit({:category_id => []})
   end
 
 end

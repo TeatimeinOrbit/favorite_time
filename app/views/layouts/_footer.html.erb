@@ -2,7 +2,7 @@
 
   <!--Sign_in, Sign_up画面以外のログアウト状態-->
   <% if !user_signed_in? && !request.path.include?("sign") %>
-    <%= link_to "検索", search_public_posted_contents_path %>
+    <%= link_to "検索できるよ", search_public_posted_contents_path %>
 
   <!--Sign_in, Sign_up, edit画面では何も表示しない-->
   <% elsif request.path.include?("sign") ||  request.path.include?("edit") %>
