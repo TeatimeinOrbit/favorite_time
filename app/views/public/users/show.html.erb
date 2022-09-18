@@ -8,3 +8,10 @@
 
   <%= @user.introduction %>
 
+
+<div>
+  <% unless @user == current_user %>
+    <%= render 'public/relationships/follow_btn', user: @user %>
+  <% end %>
+</div>
+

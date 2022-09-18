@@ -18,7 +18,11 @@ Rails.application.routes.draw do
   #ユーザー用
   namespace :public do
     get 'abobut' => 'homes#about'
-    resources :users, only: [:show, :edit, :update]
+    resources :users, only: [:show, :edit, :update] do
+      resource :relationships, only: [:create, :destroy]
+      get 'followings' => 'relationships#followings', as: 'followings'
+      get 'followers' => 'relationships#followers', as: 'followers'
+    end
     resources :posted_contents, only: [:new, :create, :index, :show] do
       resource :favorites, only: [:create, :destroy]
       resources :posted_comments, only: [:create, :destroy]
