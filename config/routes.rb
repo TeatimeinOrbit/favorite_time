@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  root to: 'public/homes#top'
+
   #ユーザーログイン用
   #URL users/sign_in ...
   devise_for :users, skip: [:passwords], controllers: {
@@ -13,16 +15,22 @@ Rails.application.routes.draw do
     sessions: 'admin/sessions'
   }
 
-  root to: 'public/homes#top'
 
   #ユーザー用
   namespace :public do
+
     get 'abobut' => 'homes#about'
+
     resources :users, only: [:show, :edit, :update] do
       resource :relationships, only: [:create, :destroy]
       get 'followings' => 'relationships#followings', as: 'followings'
       get 'followers' => 'relationships#followers', as: 'followers'
+      member do
+         # "いいね"した投稿一覧表示ページ
+        get 'favorites'
+      end
     end
+
     resources :posted_contents, only: [:new, :create, :index, :show] do
       resource :favorites, only: [:create, :destroy]
       resources :posted_comments, only: [:create, :destroy]
@@ -32,6 +40,7 @@ Rails.application.routes.draw do
     end
 
   end
+
 
    #管理者用
   namespace :admin do

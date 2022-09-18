@@ -2,7 +2,9 @@
 
 <div>
   <% @results.each do |result| %>
-    <%= result.title %>
+    <%= link_to public_posted_content_path(result.id) do %>
+      <%= result.title %>
+    <% end %>
   <% end %>
 </div>
 

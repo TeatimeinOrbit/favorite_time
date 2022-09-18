@@ -15,6 +15,7 @@
   <!--"ユーザーマイページでも、編集ページでもないログイン状態"-->
   <% else%>
     <%= link_to "検索", search_public_posted_contents_path %>
+    <%= link_to "いいね一覧", favorites_public_user_path(current_user.id)%>
 
   <% end %>
 
