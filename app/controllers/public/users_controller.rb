@@ -17,6 +17,10 @@ class Public::UsersController < ApplicationController
     end
   end
 
+  # "いいね"した投稿一覧表示ページ
+  def favorites
+    @favorites = Favorite.where(user_id: current_user.id)
+  end
 
   private
 

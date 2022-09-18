@@ -9,9 +9,11 @@
   <% end %>
   <%= @posted_content.sentence %>
 
+<% if @posted_content.user_id != current_user.id %>
   <div id="favorite-btn_<%=@posted_content.id %>">
     <%= render 'public/favorites/favorite', posted_content: @posted_content %>
   </div>
+<% end %>
 
 
 

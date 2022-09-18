@@ -1,0 +1,5 @@
+<h2>いいね一覧</h2>
+
+<% @favorites.each do |favorite| %>
+  <%= favorite.posted_content.title %>
+<% end %>
