@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   #ユーザー用
   namespace :public do
 
-    get 'abobut' => 'homes#about'
+    get 'about' => 'homes#about'
 
     resources :users, only: [:show, :edit, :update] do
       resource :relationships, only: [:create, :destroy]
@@ -28,6 +28,10 @@ Rails.application.routes.draw do
       member do
          # "いいね"した投稿一覧表示ページ
         get 'favorites'
+        # 退会確認画面
+        get 'confirm'
+        # 退会処理用
+        patch 'quit'
       end
     end
 

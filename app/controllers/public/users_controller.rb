@@ -22,6 +22,18 @@ class Public::UsersController < ApplicationController
     @favorites = Favorite.where(user_id: current_user.id)
   end
 
+  def confirm
+  end
+
+  def quit
+    @user = User.find(params[:id])
+    # statusカラムを退会者にする
+    @user.update(status: 4)
+    reset_session
+    flash[:notice] = "退会処理を実行いたしました"
+    redirect_to root_path
+  end
+
   private
 
   def user_params

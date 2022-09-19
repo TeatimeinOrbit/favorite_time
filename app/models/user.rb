@@ -3,6 +3,8 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+  # ユーザーステータス(一般, 凍結解除請求者, 凍結されている, 永久凍結, 退会者)
+  enum status: { common: 0, requesting: 1, locked_out: 2, permanently_locked_out: 3, quit: 4 }
 
   has_many :posted_contents, dependent: :destroy
   has_many :user_interests, dependent: :destroy
