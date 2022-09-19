@@ -1,4 +1,5 @@
 <h2>Sign up</h2>
+<%= notice %>
 
 <%= form_with model: @user, url: user_registration_path, id: 'new_user', class: 'new_user' do |f| %>
   <%= render "public/shared/error_messages", resource: resource %>

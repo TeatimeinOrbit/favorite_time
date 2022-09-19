@@ -68,5 +68,7 @@ gem 'jquery-rails'
 # Active Storageにて、画像加工用
 gem "image_processing", ">= 1.2"
 
+# アカウントのステータス管理用
+gem "enum_help"
 
 
