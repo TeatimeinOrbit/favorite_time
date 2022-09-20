@@ -31,6 +31,9 @@ gem 'bootsnap', '>= 1.4.4', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+
+  # コンソール画面を見やすくする用
+  gem 'pry-rails'
 end
 
 group :development do
@@ -57,14 +60,13 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # ユーザー認証機能用
 gem 'devise'
-# コンソール画面を見やすくする用
-gem 'pry-rails'
 
 gem 'net-smtp'
 # 検索機能用
 gem 'ransack'
 
 gem 'jquery-rails'
+
 # Active Storageにて、画像加工用
 gem "image_processing", ">= 1.2"
 
