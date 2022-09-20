@@ -51,6 +51,7 @@ Rails.application.routes.draw do
     root to: "homes#top"
     resources :categories, only: [:edit, :create, :index, :update, :destroy]
     resources :time_of_days, only: [:edit, :create, :index, :update, :destroy]
+    resources :users, only: [:index, :show, :edit, :destroy]
   end
 
 
