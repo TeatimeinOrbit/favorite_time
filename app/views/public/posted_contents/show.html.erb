@@ -1,0 +1,28 @@
+<h1>show page</h1>
+
+  <%= @posted_content.title %>
+  <%= @posted_content.time_of_day.name %>
+  <%= @posted_content.category.name %>
+  <%= @posted_content.user.name %>
+  <% if @posted_content.image.present? %>
+    <%= image_tag @posted_content.image %>
+  <% end %>
+  <%= @posted_content.sentence %>
+
+<% if @posted_content.user_id != current_user.id %>
+  <div id="favorite-btn_<%=@posted_content.id %>">
+    <%= render 'public/favorites/favorite', posted_content: @posted_content %>
+  </div>
+<% end %>
+
+
+
+<!--コメント投稿フォーム-->
+<div id="comment_form">
+  <%= render 'public/posted_comments/form', posted_content: @posted_content, posted_comment: @posted_comment %>
+</div>
+
+<!--コメント一覧-->
+<div id="comments_index">
+  <%= render 'public/posted_comments/index', posted_content: @posted_content %>
+</div>

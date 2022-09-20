@@ -1,0 +1,11 @@
+<!--コメント一覧-->
+<p>コメント件数：<%= posted_content.posted_comments.count %></p>
+
+<% posted_content.posted_comments.each do |posted_comment| %>
+  <p><%= image_tag posted_comment.user.get_profile_image(100,100) %></p>
+  <%= posted_comment.user.name %>
+  <%= posted_comment.created_at.strftime('%Y/%m/%d') %><%= posted_comment.comment %>
+  <% if posted_comment.user == current_user %>
+        <%= link_to "コメントを削除", public_posted_content_posted_comment_path(posted_content.id, posted_comment.id), method: :delete, remote: :true %>
+  <% end %>
+<% end %>

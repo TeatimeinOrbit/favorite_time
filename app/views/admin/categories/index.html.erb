@@ -1,0 +1,31 @@
+<h2>カテゴリー一覧</h2>
+
+<!--カテゴリー新規作成-->
+<%= form_with model: @category, url: admin_categories_path, method: :post do |f| %>
+  <%= render 'form', category: @category, f: f %>
+<% end %>
+
+<!--カテゴリー一覧-->
+  <!--1件も登録されていなければ、"カテゴリー未登録"と表示 -->
+<div>
+  <% unless @categories.present? %>
+    <p>カテゴリー未登録</p>
+  <% else %>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>カテゴリー名</th>
+        </tr>
+      </thead>
+      <% @categories.each do |category| %>
+      <tboby>
+        <tr>
+          <td><%= category.name %></td>
+          <td><%= link_to "編集", edit_admin_category_path(category.id) %></td>
+        </tr>
+      </tboby>
+      <% end %>
+    </table>
+  <% end %>
+</div>
+

@@ -1,0 +1,2 @@
+$("#comment_form").html("<%= j(render 'public/posted_comments/form', posted_content: @posted_content, posted_comment: @posted_comment) %>");
+$("#comments_index").html("<%= j(render 'public/posted_comments/index', posted_content: @posted_content) %>");

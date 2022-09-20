@@ -1,0 +1,25 @@
+<h2>検索結果ページ</h2>
+
+<div>
+  <% @results.each do |result| %>
+    <%= link_to public_posted_content_path(result.id) do %>
+      <%= result.title %>
+    <% end %>
+  <% end %>
+</div>
+
+<!--投稿検索フォーム-->
+<%= search_form_for @q, url: search_public_posted_contents_path do |f| %>
+<div>
+  <%= f.label :category_id_in, 'カテゴリー' %><br>
+  <%= f.collection_check_boxes :category_id_in, @categories, :id, :name %>
+</div>
+<div>
+  <%= f.label :time_of_day_id_in, '時間帯' %></br>
+  <%= f.collection_check_boxes :time_of_day_id_in, @time_of_days, :id, :name %>
+</div>
+  <%= f.text_field :title_or_sentence_cont_any %>
+<div>
+  <%= f.submit '検索' %>
+</div>
+<% end %>

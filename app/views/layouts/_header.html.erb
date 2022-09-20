@@ -1,0 +1,54 @@
+<header>
+  <nav>
+    <ul>
+      <!--Sign_inページ-->
+    <% if request.path.include?("sign_in") %>
+      <li>
+        <%= link_to "Top", root_path %>
+      </li>
+
+    <!--"ログインしていない"-->
+    <% elsif !user_signed_in? %>
+      <li>
+        <%= link_to "Top", root_path %>
+      </li>
+      <li>
+        <%= link_to "ログイン", new_user_session_path %>
+      </li>
+      <li>
+        <%= link_to "About", public_about_path %>
+      </li>
+
+    <!--"ログインしている" かつ "編集ページ" -->
+    <% elsif request.path.include?("edit") %>
+      <li>
+        <%= link_to "Top", root_path %>
+      </li>
+
+    <!--"ログインしている" かつ "ユーザーマイページ" -->
+    <% elsif request.path.include?("/public/users/#{current_user.id}") %>
+      <li>
+        <%= link_to "Top", root_path %>
+      </li>
+      <li>
+        <%= link_to "About", public_about_path %>
+      </li>
+      <li>
+        <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+      </li>
+
+    <!--"ログインしている"-->
+    <% else %>
+      <li>
+        <%= link_to "Top", root_path %>
+      </li>
+      <li>
+        <%= link_to "マイページ", public_user_path(current_user.id) %>
+      </li>
+       <li>
+        <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+      </li>
+    <% end %>
+    </ul>
+  </nav>
+</header>

@@ -1,0 +1,33 @@
+<h2>プロフィール編集</h2>
+
+<%= form_with model: @user, url: public_user_path(@user.id), method: :patch do |f| %>
+
+  <div class="field">
+    <%= f.label :header_image, 'ヘッダー画像' %></br>
+    <%= f.file_field :header_image, accept: "image/*", autofocus: true %>
+  </div>
+
+   <div class="field">
+    <%= f.label :profile_image, 'プロフィールアイコン' %></br>
+    <%= f.file_field :profile_image, accept: "image/*", autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :name, 'ユーザーネーム' %></br>
+    <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :introduction, '自己紹介' %></br>
+    <%= f.text_field :introduction, autofocus: true %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "設定完了" %>
+  </div>
+
+<% end %>
+
+<div>
+  <%= link_to '退会する', confirm_public_user_path(@user.id) %>
+</div>
