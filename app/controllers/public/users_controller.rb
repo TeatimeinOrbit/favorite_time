@@ -1,4 +1,5 @@
 class Public::UsersController < ApplicationController
+  before_action :set_ransack_user, only: [:index, :search]
 
   def show
     @user = User.find(params[:id])
@@ -34,10 +35,18 @@ class Public::UsersController < ApplicationController
     redirect_to root_path
   end
 
+  def search
+    @results = @q_user.result
+  end
+
   private
 
   def user_params
     params.require(:user).permit(:name, :introduction, :profile_image, :header_image)
+  end
+
+  def set_ransack_user
+    @q_user = User.ransack(params[:q])
   end
 
 

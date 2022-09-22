@@ -9,18 +9,26 @@
   <% end %>
   <%= @posted_content.sentence %>
 
-<% if @posted_content.user_id != current_user.id %>
-  <div id="favorite-btn_<%=@posted_content.id %>">
+
+<% if @posted_content.user_id == current_user.id %>
+
+  <%= link_to '編集する', edit_public_posted_content_path(@posted_content.id) %>
+<% else %>
+
+   <div id="favorite-btn_<%=@posted_content.id %>">
     <%= render 'public/favorites/favorite', posted_content: @posted_content %>
   </div>
-<% end %>
 
+
+<%= link_to '報告する', new_public_posted_content_report_path(@posted_content.id) %>
 
 
 <!--コメント投稿フォーム-->
 <div id="comment_form">
   <%= render 'public/posted_comments/form', posted_content: @posted_content, posted_comment: @posted_comment %>
 </div>
+
+<% end %>
 
 <!--コメント一覧-->
 <div id="comments_index">

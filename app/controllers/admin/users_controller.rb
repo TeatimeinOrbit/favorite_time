@@ -1,16 +1,16 @@
 class Admin::UsersController < ApplicationController
-  
-  def indext 
-  end 
-  
+
+  def index
+  end
+
   def show
-  end 
-  
+  end
+
   def edit
-  end 
-  
+  end
+
   def destroy
-  end 
-  
-  
+  end
+
+
 end

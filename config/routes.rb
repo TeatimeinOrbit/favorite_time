@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   }
 
 
-  #ユーザー用
+  # ユーザー用
   namespace :public do
 
     get 'about' => 'homes#about'
@@ -26,18 +26,22 @@ Rails.application.routes.draw do
       get 'followings' => 'relationships#followings', as: 'followings'
       get 'followers' => 'relationships#followers', as: 'followers'
       member do
-         # "いいね"した投稿一覧表示ページ
+        # "いいね"した投稿一覧表示ページ
         get 'favorites'
         # 退会確認画面
         get 'confirm'
         # 退会処理用
         patch 'quit'
       end
+      collection do
+        get 'search'
+      end
     end
 
-    resources :posted_contents, only: [:new, :create, :index, :show] do
+    resources :posted_contents, only: [:new, :create, :index, :show, :edit, :update, :destroy] do
       resource :favorites, only: [:create, :destroy]
       resources :posted_comments, only: [:create, :destroy]
+      resources :reports, only: [:new, :create, :destroy]
       collection do
         get 'search'
       end
@@ -46,7 +50,7 @@ Rails.application.routes.draw do
   end
 
 
-   #管理者用
+   # 管理者用
   namespace :admin do
     root to: "homes#top"
     resources :categories, only: [:edit, :create, :index, :update, :destroy]

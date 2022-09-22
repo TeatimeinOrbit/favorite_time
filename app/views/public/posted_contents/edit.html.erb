@@ -1,0 +1,45 @@
+<% if @posted_content.errors.any? %>
+  <strong><%= @posted_content.errors.count %>error prohibited this obj from being saved:</strong>
+  <ul>
+    <% @posted_content.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+
+<div class='container'>
+  <div class='row'>
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+  		<h1>投稿編集</h1>
+  		<%= form_with model: @posted_content, url: public_posted_content_path(@posted_content.id), method: :patch do |f| %>
+  		  <div class="form-group">
+  		    <%= f.label :image, '投稿画像' %></br>
+        　<%= f.file_field :image, accept: "image/*", autofocus: true %>
+        <div class="form-group">
+          <%= f.label :title, '投稿タイトル' %></br>
+          <%= f.text_field :title, autofocus: true %>
+        </div>
+        <div class="form-group">
+          <%= f.label :category_id, 'カテゴリー' %></br>
+          <%= f.select :category_id, options_from_collection_for_select(@categories, :id, :name) %>
+        <div class="form-group">
+          <%= f.label :time_of_day_id, '時間帯' %></br>
+          <%= f.select :time_of_day_id, options_from_collection_for_select(@time_of_days, :id, :name) %>
+        </div>
+        <div class="form-group">
+          <%= f.label :sentence, '文章' %></br>
+          <%= f.text_field :sentence, autofocus: true %>
+        </div>
+        <div class="form-group">
+          <%= f.submit '更新', class:"btn btn-success col-md-5" %>
+        </div>
+      <% end %>
+      <div>
+        <%= link_to '削除する', public_posted_content_path(@posted_content.id), method: :delete %>
+        <%= link_to '戻る', public_posted_content_path(@posted_content.id) %>
+      </div>
+    </div>
+  </div>
+</div>
+

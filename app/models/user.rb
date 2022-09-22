@@ -3,13 +3,14 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  # ユーザーステータス(一般, 凍結解除請求者, 凍結されている, 永久凍結, 退会者)
-  enum status: { common: 0, requesting: 1, locked_out: 2, permanently_locked_out: 3, quit: 4 }
+  # ユーザーステータス(一般, 凍結解除請求者, 凍結されている, 永久凍結, 退会者, 通報され後判断待ち)
+  enum status: { common: 0, requesting: 1, locked_out: 2, permanently_locked_out: 3, quit: 4, reported: 5}
 
   has_many :posted_contents, dependent: :destroy
   has_many :user_interests, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :posted_comments, dependent: :destroy
+  has_many :reports
 
   # "フォローする", "フォローされる" の関係性
   has_many :relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
