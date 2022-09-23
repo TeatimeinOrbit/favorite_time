@@ -11,7 +11,7 @@
 <div>
   <% @results.each do |result| %>
     <%= link_to public_posted_content_path(result.id) do %>
-      <%= result.name %>
+      <%= result.title %>
     <% end %>
   <% end %>
 </div>

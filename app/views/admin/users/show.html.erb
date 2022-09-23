@@ -1,1 +1,23 @@
 <h2>通報されたユーザーの投稿</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>会員ID</th>
+      <th>プロフィール画像</th>
+      <th>名前</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><%= @reported_user.name %></td>
+        <td><%= @reported_user.profile_image %></td>
+        <td><%= @reported_user.id %></td>
+        <td><%= link_to '投稿を確認する', admin_user_path(reported_user.id) %>
+      </tr>
+      <% @reports.each do |report| %>
+        <%= report.title
+      
+      <% end %>
+  </tbody>
+</table>
