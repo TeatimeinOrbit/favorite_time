@@ -3,6 +3,7 @@ class Public::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @posted_contents = PostedContent.where(user_id: @user.id)
   end
 
   def edit

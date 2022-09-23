@@ -1,0 +1,27 @@
+<table class="content_index_table">
+  <% posted_contents.each do |posted_content| %>
+  <tbody>
+    <tr>
+      <td class="content_index_title"><%= posted_content.title %></td>
+    <tr>
+      <td class="content_index_category_name"><%= posted_content.category.name%></td>
+      <td class="content_index_time_of_day_name"><%= posted_content.time_of_day.name%></td>
+      <td class="content_index_user_name"><%= posted_content.user.name%></td>
+    </tr>
+    <% if posted_content.image.present? %>
+    <tr>
+      <td class="content_index_thum_box"><%= image_tag posted_content.image %></td>
+    </tr>
+    <% end %>
+    <tr>
+      <td class="content_index_sentence"><%= posted_content.sentence%></td>
+    </tr>
+    <td>
+      <!--CSSを使いリンクをかぶせる-->
+      <%= link_to public_posted_content_path(posted_content.id) do %>
+        <span class="content_index_over-link"></span>
+      <% end %>
+    </td>
+  </tbody>
+  <% end %>
+</table>

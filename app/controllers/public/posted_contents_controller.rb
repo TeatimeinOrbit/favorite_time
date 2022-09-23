@@ -18,7 +18,7 @@ class Public::PostedContentsController < ApplicationController
   end
 
   def index
-     @results = @q.result
+    @results = @q.result
   end
 
   def show

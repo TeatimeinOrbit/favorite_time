@@ -25,12 +25,12 @@ class User < ApplicationRecord
 
 
   # ユーザーのプロフィール画像を取得するメソッド
-  def get_profile_image(width, height)
+  def get_profile_image
     unless profile_image.attached?
       file_path = Rails.root.join('app/assets/images/kkrn_icon_user_5.png')
       profile_image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/png')
     end
-    profile_image.variant(resize_to_limit: [width, height]).processed
+    profile_image
   end
 
 

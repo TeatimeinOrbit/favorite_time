@@ -1,11 +1,2 @@
-<h1>index page</h1>
-検索結果ではないので、投稿履歴ページ
-
-
-<div>
-  <% @results.each do |result| %>
-    <%= link_to public_posted_content_path(result.id) do %>
-      <%= result.title %>
-    <% end %>
-  <% end %>
-</div>
+<!--検索結果を表示-->
+<%= render 'public/posted_contents/lists', posted_contents: @results %>
