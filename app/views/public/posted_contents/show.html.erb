@@ -2,20 +2,38 @@
 <table class="content_show_table">
   <tbody>
     <tr>
-      <td class="content_show_title"><%= @posted_content.title %></td>
+      <td class="content_show_title">
+        <%= @posted_content.title %>
+      </td>
     <tr class="content_show_profile_image_line">
-      <td class="content_show_category_name"><%= @posted_content.category.name%></td>
-      <td class="content_show_time_of_day_name"><%= @posted_content.time_of_day.name%></td>
-      <td class="content_show_profile_image"><%= image_tag @posted_content.user.get_profile_image %></td>
-      <td class="content_show_user_name"><%= @posted_content.user.name%></td>
+      <td class="content_show_profile_image">
+        <%= link_to public_user_path(@posted_content.user.id) do %>
+          <%= image_tag @posted_content.user.get_profile_image %>
+        <% end %>
+      </td>
+      <td class="content_show_user_name">
+        <%= link_to public_user_path(@posted_content.user.id) do %>
+          <%= @posted_content.user.name%>
+        <% end %>
+      </td>
+      <td class="content_show_category_name">
+        <%= @posted_content.category.name%>
+      </td>
+      <td class="content_show_time_of_day_name">
+        <%= @posted_content.time_of_day.name%>
+      </td>
     </tr>
     <% if @posted_content.image.present? %>
     <tr>
-      <td class="content_show_thum_box"><%= image_tag @posted_content.image %></td>
+      <td class="content_show_thum_box">
+        <%= image_tag @posted_content.image %>
+      </td>
     </tr>
     <% end %>
     <tr>
-      <td class="content_show_sentence"><%= @posted_content.sentence%></td>
+      <td class="content_show_sentence">
+        <%= @posted_content.sentence%>
+      </td>
     </tr>
   </tbody>
 </table>

@@ -1,6 +1,6 @@
 <header>
   <nav>
-    <ul>
+    <ul class="header_line">
     <!--管理者用　-->
     <% if request.path.include?("admin") %>
       <%= link_to 'ログアウト', destroy_admin_session_path %>
