@@ -8,8 +8,7 @@ class Admin::UsersController < ApplicationController
 
   def show
     @reported_user = User.find(params[:id])
-    @reports = @user.posted_contents.reports.all
-    @posted_contents = PostedContent
+    @reports = Report.where(reported_id: @reported_user.id)
   end
 
   def edit

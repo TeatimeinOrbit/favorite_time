@@ -7,7 +7,9 @@ class Public::ReportsController < ApplicationController
   def create
     # 通報されたコンテンツを保存
     @posted_content = PostedContent.find(params[:posted_content_id])
-    @report = current_user.reports.new(report_params)
+    @report = Report.new(report_params)
+    @report.reporter_id = current_user.id
+    @report.reported_id = @posted_content.user.id
     @report.posted_content_id = @posted_content.id
     @report.save
     #通報された投稿をもつユーザーのステイタスを、"通報され後判断待ち" に変える
@@ -18,16 +20,18 @@ class Public::ReportsController < ApplicationController
   end
 
   def destroy
-    @report = PostedContent.find(params[:posted_content_id])
-    @report = Report.find(params[:id])
+    @posted_content = PostedContent.find(params[:posted_content_id])
+    @report = Report.where(reporter_id: current_user.id, posted_content_id: @posted_content.id)
     @report.destroy
+    flash[:notice] = "報告を取り下げました"
+    redirect_to public_posted_content_path(@posted_content.id)
   end
 
 
   private
 
   def report_params
-    params.require(:report).permit(:reason, :posted_content_id, :user_id)
+    params.require(:report).permit(:reason, :posted_content_id, :reporter_id, :reported_id)
   end
 
 end

@@ -8,10 +8,9 @@
   box-sizing: border-box;
 }
 
-.user_container {
+.users_container {
   width: 100%;
-  padding: 1px 1px 60px;
-
+  padding: 1px 1px 50px;
 }
 
 .users_header_image img {
@@ -42,6 +41,11 @@
   position: relative;
 }
 
+.users_introduction {
+  font-weight: bold;
+  margin-left: 10px;
+}
+
 .users_follow_btn a {
   position: absolute;
   right: 10px;
@@ -49,11 +53,6 @@
   background-color: #5AC2D9;
   color: white;
   border-radius: 10%;
-}
-
-.users_introduction {
-  font-weight: bold;
-  margin-left: 10px;
 }
 
 .users_edit_profile a {
