@@ -5,12 +5,21 @@ class PostedContent < ApplicationRecord
   belongs_to :time_of_day
   has_many :favorites, dependent: :destroy
   has_many :posted_comments, dependent: :destroy
+  has_many :reports, dependent: :destroy
 
   has_one_attached :image
 
   # すでに"いいね"しているかどうか判断するメソッド
   def favorited_by?(user)
     favorites.exists?(user_id: user.id)
+  end
+
+  # eachの中のform_withに、モデルのインスタンスを与えるためのメソッド
+  def user_interest?(posted_content)
+    unless @interest =UserInterest.find_by(category_id: posted_content.category_id)
+      @interest = UserInterest.new
+    end
+    @interest
   end
 
 end

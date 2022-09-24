@@ -18,16 +18,44 @@ class Public::PostedContentsController < ApplicationController
   end
 
   def index
-
+    @results = @q.result
+    @user_interests = UserItenrest.new
   end
 
   def show
     @posted_content = PostedContent.find(params[:id])
     @posted_comment = PostedComment.new
+    
+    @p =  UserInterest.find(params[:id])
+    if @p
+      @path = "/public/user_interest/#{@p}"
+    else
+      @path = 
   end
 
-  def search
+  def edit
+    @posted_content = PostedContent.find(params[:id])
+    @categories = Category.all
+    @time_of_days = TimeOfDay.all
+  end
 
+  def update
+    @posted_content = PostedContent.find(params[:id])
+    if @posted_content.update(posted_content_params)
+      redirect_to public_posted_content_path(@posted_content.id)
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @posted_content = PostedContent.find(params[:id])
+    @posted_content.destroy
+    redirect_to public_posted_contents_path
+  end
+
+
+  def search
     @results = @q.result
     @categories = Category.all
     @time_of_days = TimeOfDay.all

@@ -1,3 +1,129 @@
 // Place all the styles related to the public/posted_contents controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/*indexページ ここから*/
+.content_index_table {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.content_index_table tbody {
+  padding: 5px;
+  width: 360px;
+  height: 300px;
+  border: solid 1px #b0c4de;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+}
+
+.content_index_over-link {
+  position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 2;
+}
+
+.interest_action {
+  position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 2;
+}
+
+.content_index_title {
+  font-size: 20px;
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+.content_index_user_name {
+  margin-left: auto;
+}
+
+.content_index_thum_box img {
+  width: 360px;
+  height: 180px;
+  object-fit: cover;
+}
+
+.content_index_sentence {
+  white-space: nowrap;
+  justify-content:　start;
+}
+/*indexページ ここまで*/
+
+
+
+
+
+/*showページ ここから*/
+.content_show_table {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.content_show_table tbody {
+  width: 100%;
+  border: solid 1px #b0c4de;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+  z-index: 1;
+}
+
+.content_show_title {
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.content_show_user_name {
+  font-size: 20px;
+  font-weight: bold;
+  margin-left: 200px;
+}
+
+.content_show_user_name a {
+  color: black;
+}
+
+.content_show_profile_image img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-left: 10px;
+}
+
+.content_show_thum_box img {
+  width: 360px;
+  height: 180px;
+  object-fit: cover;
+}
+
+.content_show_sentence {
+  justify-content:　start;
+}
+
+/*showページ ここまで*/

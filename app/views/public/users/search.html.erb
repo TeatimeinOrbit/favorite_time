@@ -1,0 +1,17 @@
+<!--ユーザー検索フォーム-->
+<%= search_form_for @q_user, url: search_public_users_path do |f| %>
+</div>
+  <%= f.text_field :name_cont %>
+<div>
+  <%= f.submit '検索' %>
+</div>
+<% end %>
+
+
+<div>
+  <% @results.each do |result| %>
+    <%= link_to public_posted_content_path(result.id) do %>
+      <%= result.title %>
+    <% end %>
+  <% end %>
+</div>

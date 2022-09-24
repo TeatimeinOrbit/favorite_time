@@ -1,0 +1,17 @@
+<!--ユーザーのプロフィール欄-->
+<div class="users_header_image">
+  <%= image_tag user.get_header_image %>
+</div>
+
+<div class="users_profile_image_line">
+  <div class="users_profile_image">
+    <%= image_tag user.get_profile_image %>
+  </div>
+  <div class="users_user_name">
+    <%= user.name %>
+  </div>
+</div>
+
+<div class="users_introduction">
+  <%= user.introduction %>
+</div>
