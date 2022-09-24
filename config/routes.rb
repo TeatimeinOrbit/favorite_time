@@ -55,6 +55,8 @@ Rails.application.routes.draw do
       end
     end
 
+    resources :user_interests, only: [:create, :update, :index]
+
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

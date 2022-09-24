@@ -19,11 +19,18 @@ class Public::PostedContentsController < ApplicationController
 
   def index
     @results = @q.result
+    @user_interests = UserItenrest.new
   end
 
   def show
     @posted_content = PostedContent.find(params[:id])
     @posted_comment = PostedComment.new
+    
+    @p =  UserInterest.find(params[:id])
+    if @p
+      @path = "/public/user_interest/#{@p}"
+    else
+      @path = 
   end
 
   def edit

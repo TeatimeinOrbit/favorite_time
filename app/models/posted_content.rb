@@ -14,4 +14,12 @@ class PostedContent < ApplicationRecord
     favorites.exists?(user_id: user.id)
   end
 
+  # eachの中のform_withに、モデルのインスタンスを与えるためのメソッド
+  def user_interest?(posted_content)
+    unless @interest =UserInterest.find_by(category_id: posted_content.category_id)
+      @interest = UserInterest.new
+    end
+    @interest
+  end
+
 end
