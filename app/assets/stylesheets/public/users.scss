@@ -58,3 +58,29 @@
 .users_edit_profile a {
   color: #0066c0;
 }
+
+
+/*ログインここから*/
+.log_in_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 50px;
+}
+/*ログインここまで*/
+
+
+/*Sign_upここから*/
+.sign_up_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 50px;
+}
+
+.sign_up_container input {
+  width: 260px;
+}
+/*Sign_upここまで*/
