@@ -3,8 +3,95 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
 
-.admin_users_container {
+/*ここからindexページ*/
+.admin_users_index_table_container {
+  display: flex;
+  justify-content: space-around;
+}
+
+.admin_users_index_table h2 {
+  margin-top: 10px;
+  padding-bottom: 15px;
+}
+
+.admin_users_index_profile {
+  padding-right: 5px;
+}
+
+.admin_users_index_profile_image img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+/*ここまでindexページ*/
+
+
+
+/*ここからshowページ*/
+.admin_users_show_h2 {
+  margin: 10px 20px;
+  padding-bottom: 15px;
+  position: relative;
+}
+
+.admin_users_show_change_status {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  left: 300px;
+  top: 60px;
+}
+
+.admin_users_show_change_status form:nth-child(1) input {
+  font-size: 20px;
+  font-weight: bold;
+  background-color: #5AFF19;
+  border-radius: 15%;
+  padding: 0 10px;
+  margin: 0 30px 30px;
+}
+
+.admin_users_show_change_status form:nth-child(2) input {
+  font-size: 20px;
+  font-weight: bold;
+  background-color: red;
+  padding: 0 10px;
+  margin: 0 30px 30px;
+}
+
+.admin_users_show_change_status form:nth-child(3) input {
+  font-size: 20px;
+  color: white;
+  font-weight: bold;
+  background-color: black;
+  padding: 0 10px;
+  margin: 0 30px 30px;
+}
+
+.admin_users_show_reported_container {
+  display: flex;
+  justify-content: space-around;
+}
+
+.admin_users_show_container {
   width: 300px;
+  height: 450px;
   border: 2px solid black;
   margin: 10px;
 }
+
+.admin_users_show_table_tbody {
+  text-align: left;
+}
+
+.admin_users_show_table_tbody th {
+  padding-right: 20px;
+}
+
+.admin_users_show_thum_box img {
+  width: 360px;
+  height: 180px;
+  object-fit: cover;
+}
+/*ここまでshowページ*/

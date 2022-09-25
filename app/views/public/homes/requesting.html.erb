@@ -1,0 +1,23 @@
+<div class="session_container">
+  <% if @user.status == "locked_out" %>
+    <h2>凍結中</h2>
+    <p>
+      現在、<%= @user.name %>のアカウントは凍結されております。</br>
+      こちらで、凍結解除のリクエストを送ることができます。</br>
+      再度、報告されおります投稿を審議し、問題なしと判断されれば解除されます。
+    </p>
+
+    <div>
+      <%= form_with model: @user, url: public_user_path(@user.id), method: :patch do |f| %>
+        <%= f.hidden_field :status, :value => "requesting" %>
+        <%= f.submit '凍結解除申請を送る' %>
+      <% end %>
+    </div>
+  <% elsif @user.status == "requesting" %>
+    <h2>審議中</h2>
+    <p>ただいま審議中です。審議には数日を要する場合があります。</p>
+  <% else %>
+    <h2>アカウント情報</h2>
+    <p>お使いのアカウントは有効です。</p>
+  <% end %>
+</div>

@@ -12,7 +12,10 @@ class Public::UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    if @user.update(user_params)
+    if request.referer.include?("requesting")
+      @user.update(user_params)
+      redirect_to public_requesting_path
+    elsif  @user.update(user_params)
       redirect_to public_user_path(@user.id)
     else
       render :edit
@@ -43,7 +46,7 @@ class Public::UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :introduction, :profile_image, :header_image)
+    params.require(:user).permit(:name, :introduction, :profile_image, :header_image, :status)
   end
 
   def set_ransack_user

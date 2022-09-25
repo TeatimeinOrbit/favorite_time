@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     root to: "homes#top"
     resources :categories, only: [:edit, :create, :index, :update, :destroy]
     resources :time_of_days, only: [:edit, :create, :index, :update, :destroy]
-    resources :users, only: [:index, :show, :edit, :destroy]
+    resources :users, only: [:index, :show, :edit, :update, :destroy]
   end
 
 
@@ -28,6 +28,7 @@ Rails.application.routes.draw do
   namespace :public do
 
     get 'about' => 'homes#about'
+    get 'requesting' => 'homes#requesting'
 
     resources :users, only: [:show, :edit, :update] do
       resource :relationships, only: [:create, :destroy]

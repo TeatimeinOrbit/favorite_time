@@ -1,7 +1,58 @@
-<h2>通報されたユーザーの投稿</h2>
+<h2 class="admin_users_show_h2" >通報されたユーザーの投稿</h2>
 
-<div class="admin_users_container">
-  <%= render 'public/users/profile', user: @reported_user %>
+<div class="admin_users_show_change_status">
+  <%= form_with model: @user, url: admin_user_path(@user.id), method: :patch do |f| %>
+    <%= f.hidden_field :status, :value => "common" %>
+    <%= f.submit '問題なし' %>
+  <% end %>
+
+  <%= form_with model: @user, url: admin_user_path(@user.id), method: :patch do |f| %>
+    <%= f.hidden_field :status, :value => "locked_out" %>
+    <%= f.submit '凍結する' %>
+  <% end %>
+
+  <%= form_with model: @user, url: admin_user_path(@user.id), method: :patch do |f| %>
+    <%= f.hidden_field :status, :value => "permanently_locked_out" %>
+    <%= f.submit '永久凍結する' %>
+  <% end %>
 </div>
 
+<div class="admin_users_show_reported_container">
+
+  <div class="admin_users_show_container">
+    <%= render 'public/users/profile', user: @user %>
+  </div>
+
+  <table class="admin_users_show_table">
+    <% @reports.each do |report| %>
+    <tbody class="admin_users_show_table_tbody">
+      <tr>
+        <th>理由</th>
+        <td class="admin_users_show_report_reason"><%= report.reason %></td>
+      <tr>
+      <tr>
+        <th>報告者</th>
+        <td class="admin_users_show_reporter_name"><%= report.reporter.name %></td>
+      <tr>
+      <tr>
+        <th>投稿タイトル</th>
+        <td class="admin_users_show_title"><%= report.posted_content.title %></td>
+      <tr>
+        <th>投稿者名</th>
+        <td class="admin_users_show_user_name"><%= report.reported.name%></td>
+      </tr>
+      <% if report.posted_content.image.present? %>
+      <tr>
+        <th>投稿画像</th>
+        <td class="admin_users_show_thum_box"><%= image_tag report.posted_content.image %></td>
+      </tr>
+      <% end %>
+      <tr>
+        <th>投稿本文</th>
+        <td class="admin_users_show_sentence"><%= report.posted_content.sentence%></td>
+      </tr>
+    </tbody>
+    <% end %>
+  </table>
+</div>
 
