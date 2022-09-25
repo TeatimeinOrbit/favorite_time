@@ -1,3 +1,19 @@
 // Place all the styles related to the public/homes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.session_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 80px;
+}
+
+.session_container h2 {
+  font-size: 30px;
+}
+
+.session_container p {
+  font-weight: bold;
+}

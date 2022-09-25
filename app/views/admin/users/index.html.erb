@@ -1,21 +1,17 @@
-<h2>通報された投稿があるユーザーのリスト</h2>
+<div class="admin_users_index_table_container">
 
-<table class="table">
-  <thead>
-    <tr>
-      <th>会員ID</th>
-      <th>プロフィール画像</th>
-      <th>名前</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @reported_users.each do |reported_user| %>
-      <tr>
-        <td><%= reported_user.id %></td>
-        <td><%= image_tag reported_user.profile_image %></td>
-        <td><%= reported_user.name %></td>
-        <td><%= link_to '投稿を確認する', admin_user_path(reported_user.id) %>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+  <div class="admin_users_index_table">
+    <h2>通報された投稿があるユーザーのリスト</h2>
+    <table class="reported_users_table">
+      <%= render 'admin/users/list', users: @reported_users %>
+    </table>
+  </div>
+
+  <div class="admin_users_index_table">
+    <h2>凍結解除申請をしているユーザーのリスト</h2>
+    <table class="requesting_users_table">
+      <%= render 'admin/users/list', users: @requesting_users %>
+    </table>
+  </div>
+
+</div>
