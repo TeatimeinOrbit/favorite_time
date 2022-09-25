@@ -1,14 +1,15 @@
-<h2>カテゴリー編集</h2>
+<h2 class=admin_container_name>カテゴリー編集</h2>
+<div class="admin_container">
+  <!--カテゴリー編集-->
+  <%= form_with model: @category, url: admin_category_path, method: :patch do |f| %>
+    <%= render 'form', category: @category, f: f %>
+  <% end %>
 
-<!--カテゴリー編集-->
-<%= form_with model: @category, url: admin_category_path, method: :patch do |f| %>
-  <%= render 'form', category: @category, f: f %>
-<% end %>
+  <div>
+    <%= link_to "削除", admin_category_path(@category.id), method: :delete, data: {confrim: "本当に削除しますか"} %>
+  </div>
 
-<div>
-  <%= link_to "削除", admin_category_path(@category.id), method: :delete, data: {confrim: "本当に削除しますか"} %>
-</div>
-
-<div>
-  <%= link_to "戻る", admin_categories_path %>
+  <div>
+    <%= link_to "戻る", admin_categories_path %>
+  </div>
 </div>
