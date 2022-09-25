@@ -17,18 +17,9 @@
       <td class="content_index_sentence"><%= posted_content.sentence%></td>
     </tr>
     <td>
-    <!--"自分が投稿したコンテンツではない" かつ "管理者ページではない場合"-->
-    <% if posted_content.user_id != current_user.id && !request.path.include?("admin") %>
-      <%= form_with model: user_interest do |f| %>
-        <div class="interest_action">
-          <% f.submit %>
-        </div>
-      <% end %>
-    <% else %>
-      <!--CSSを使いリンクをかぶせる-->
-      <%= link_to public_posted_content_path(posted_content.id) do %>
-        <span class="content_index_over-link"></span>
-      <% end %>
+    <!--CSSを使いリンクをかぶせる-->
+    <%= link_to public_posted_content_path(posted_content.id) do %>
+      <span class="content_index_over-link"></span>
     <% end %>
     </td>
   </tbody>
