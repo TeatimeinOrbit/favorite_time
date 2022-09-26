@@ -1,5 +1,6 @@
 class Public::PostedContentsController < ApplicationController
   before_action :set_ransack, only: [:index, :search]
+  before_action :set_ransack_user, only: [:index, :search]
 
   def new
     @posted_content = PostedContent.new
@@ -51,6 +52,7 @@ class Public::PostedContentsController < ApplicationController
 
   def search
     @results = @q.result
+    @results = @q_user.result
     @categories = Category.all
     @time_of_days = TimeOfDay.all
   end
@@ -66,6 +68,10 @@ class Public::PostedContentsController < ApplicationController
 
   def set_ransack
     @q = PostedContent.ransack(params[:q])
+  end
+
+  def set_ransack_user
+    @q_user = User.ransack(params[:q])
   end
 
 end

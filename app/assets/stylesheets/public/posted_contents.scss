@@ -8,7 +8,7 @@
   box-sizing: border-box;
 }
 
-/*indexページ ここから*/
+/*indexページ ここから-----------------------*/
 .content_index_table {
   display: flex;
   justify-content: center;
@@ -59,13 +59,13 @@
   white-space: nowrap;
   justify-content:　start;
 }
-/*indexページ ここまで*/
+/*indexページ ここまで-----------------------------*/
 
 
 
 
 
-/*showページ ここから*/
+/*showページ ここから------------------------------*/
 .content_show_table {
   width: 100%;
   display: flex;
@@ -116,10 +116,44 @@
 .content_show_sentence {
   justify-content:　start;
 }
-/*showページ ここまで*/
+/*showページ ここまで------------------------------------*/
 
 
-/*searchページ ここから*/
+
+/*searchページ ここから------------------------------------*/
+
+/*ユーザー検索フォームここから*/
+.user_search {
+  margin-top: 10px;
+  color: #24130d;
+  text-align: center;
+}
+
+.user_search_text input {
+  width: 250px;
+  height: 30px;
+  border: 2px solid #6e4f36;
+  border-radius: 5px;
+  margin: Z0px;
+}
+
+.user_search_action {
+  padding-top: 20px;
+  margin-bottom: 50px;
+}
+
+.user_search_action input {
+  padding: 5px 30px;
+}
+
+/*ユーザー検索フォームここまで*/
+
+
+.content_search {
+  color: #24130d;
+  text-align: center;
+}
+
 .content_search_container {
   display: flex;
   justify-content: center;
@@ -128,12 +162,19 @@
   text-align: center;
 }
 
+.content_search_container p {
+  font-weight: bold;
+  font-size: 50px;
+  transform: scale(4, 1.5);
+  color: #4b2d16;
+}
+
 .content_search_category {
-  padding-bottom: 20px;
   display: flex;
   flex-wrap: wrap;
 }
 
+/*カテゴリーチェックボックスここから*/
 .content_search_category input[type=checkbox] {
   display: none;
 }
@@ -159,16 +200,21 @@
   border: 1px solid #a0d8ef;
   color: #24130d;
 }
-
+/*カテゴリーチェックボックスここまで*/
 
 
 .content_search_time_of_day {
   display: flex;
   flex-wrap: wrap;
-  padding-bottom: 20px;
+  padding: 10px 0 20px;
 }
 
+/*時間帯チェックボックスここから*/
 .content_search_time_of_day input[type=checkbox] {
+  display: none;
+}
+
+.content_search_time_of_day label:nth-child(1) {
   display: none;
 }
 
@@ -183,4 +229,29 @@
   font-weight: bold;
   color: #542D24;
 }
-/*searchページ ここまで*/
+
+.content_search_time_of_day input[type=checkbox]:checked + label {
+  background-color: #ff7a5b;
+  border: 1px solid #f4ac92;
+  color: #0b1644;
+}
+/*時間帯チェックボックスここまで*/
+
+
+.content_search_text input {
+  width: 250px;
+  height: 30px;
+  border: 2px solid #6e4f36;
+  border-radius: 5px;
+  margin: 20px;
+}
+
+.content_search_action {
+  padding-top: 20px;
+  margin-bottom: 200px;
+}
+
+.content_search_action input {
+  padding: 5px 30px;
+}
+/*searchページ ここまで---------------------------------------*/

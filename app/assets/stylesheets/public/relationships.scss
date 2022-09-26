@@ -1,3 +1,41 @@
 // Place all the styles related to the public/relationships controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+
+.relationships_index_container_name{
+  margin: 25px 0 0 30px;
+  padding-bottom: 15px;
+}
+
+.relationships_index_table {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.relationships_index_table tbody {
+  margin-left: 40px;
+}
+
+.relationships_index_profile_image img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.relationships_index_user_name {
+  padding-left: 10px;
+  font-weight: bold;
+}
+
+.relationships_index_user_name a {
+  text-decoration: none;
+  color: #0b1644;
+}
+
+.relationships_index_container p {
+  margin-left: 40px;
+  font-weight: bold;
+  color: #0b1644;
+}
