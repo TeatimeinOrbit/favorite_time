@@ -3,13 +3,14 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  # ユーザーステータス(一般, 凍結解除請求者, 凍結されている, 永久凍結, 退会者)
-  enum status: { common: 0, requesting: 1, locked_out: 2, permanently_locked_out: 3, quit: 4 }
+  # ユーザーステータス(一般, 凍結解除請求者, 凍結されている, 永久凍結, 退会者, 通報され後判断待ち)
+  enum status: { common: 0, requesting: 1, locked_out: 2, permanently_locked_out: 3, quit: 4, reported: 5}
 
   has_many :posted_contents, dependent: :destroy
   has_many :user_interests, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :posted_comments, dependent: :destroy
+  has_many :reports
 
   # "フォローする", "フォローされる" の関係性
   has_many :relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
@@ -18,20 +19,32 @@ class User < ApplicationRecord
   has_many :followings, through: :relationships, source: :followed
   has_many :followers, through: :reverse_of_relationships, source: :follower
 
+  # "通報する", "通報される"の関係性
+  has_many :reporter, class_name: "Report", foreign_key: "reporter_id"
+  has_many :reported, class_name: "Report", foreign_key: "reported_id"
+
   #profile_imageはプロフィールアイコンの画像, header_imageはユーザーページ上部の画像
   has_one_attached :profile_image
   has_one_attached :header_image
 
 
   # ユーザーのプロフィール画像を取得するメソッド
-  def get_profile_image(width, height)
+  def get_profile_image
     unless profile_image.attached?
       file_path = Rails.root.join('app/assets/images/kkrn_icon_user_5.png')
       profile_image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/png')
     end
-    profile_image.variant(resize_to_limit: [width, height]).processed
+    profile_image
   end
 
+  # ユーザーページのヘッダー画像を取得するメソッド
+  def get_header_image
+    unless header_image.attached?
+      file_path = Rails.root.join('app/assets/images/cake-5.jpg')
+      header_image.attach(io: File.open(file_path), filename: 'default-header-image.jpg', content_type: 'image/jpg')
+    end
+    header_image
+  end
 
   # フォローした時の処理
   def follow(user_id)

@@ -1,53 +1,75 @@
 <header>
   <nav>
-    <ul>
-      <!--Sign_inページ-->
-    <% if request.path.include?("sign_in") %>
-      <li>
-        <%= link_to "Top", root_path %>
-      </li>
+    <ul class="header_line">
+    <!--管理者用　-->
+    <% if request.path.include?("admin") %>
+      <% if admin_signed_in? %>
+        <li class="admin_header_line">
+          <%= link_to 'ユーザー管理', admin_users_path %>
+        </li>
+        <li class="admin_header_line">
+          <%= link_to 'カテゴリーマスタ管理', admin_categories_path %>
+        </li>
+        <li class="admin_header_line">
+          <%= link_to '時間帯マスタ管理', admin_time_of_days_path %>
+        </li>
+        <li class="admin_header_line">
+          <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete %>
+        </li>
+      <% end %>
 
-    <!--"ログインしていない"-->
-    <% elsif !user_signed_in? %>
-      <li>
-        <%= link_to "Top", root_path %>
-      </li>
-      <li>
-        <%= link_to "ログイン", new_user_session_path %>
-      </li>
-      <li>
-        <%= link_to "About", public_about_path %>
-      </li>
-
-    <!--"ログインしている" かつ "編集ページ" -->
-    <% elsif request.path.include?("edit") %>
-      <li>
-        <%= link_to "Top", root_path %>
-      </li>
-
-    <!--"ログインしている" かつ "ユーザーマイページ" -->
-    <% elsif request.path.include?("/public/users/#{current_user.id}") %>
-      <li>
-        <%= link_to "Top", root_path %>
-      </li>
-      <li>
-        <%= link_to "About", public_about_path %>
-      </li>
-      <li>
-        <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-      </li>
-
-    <!--"ログインしている"-->
+    <!--ユーザー用　-->
     <% else %>
-      <li>
-        <%= link_to "Top", root_path %>
-      </li>
-      <li>
-        <%= link_to "マイページ", public_user_path(current_user.id) %>
-      </li>
-       <li>
-        <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-      </li>
+
+      <!--Sign_inページ-->
+      <% if request.path.include?("sign_in") %>
+        <li>
+          <%= link_to "Top", root_path %>
+        </li>
+
+      <!--"ログインしていない"-->
+      <% elsif !user_signed_in? %>
+        <li>
+          <%= link_to "Top", root_path %>
+        </li>
+        <li>
+          <%= link_to "ログイン", new_user_session_path %>
+        </li>
+        <li>
+          <%= link_to "About", public_about_path %>
+        </li>
+
+      <!--"ログインしている" かつ "編集ページ" -->
+      <% elsif request.path.include?("edit") %>
+        <li>
+          <%= link_to "Top", root_path %>
+        </li>
+
+      <!--"ログインしている" かつ "ユーザーマイページ" -->
+      <% elsif request.path.include?("/public/users/#{current_user.id}") %>
+        <li>
+          <%= link_to "Top", root_path %>
+        </li>
+        <li>
+          <%= link_to "About", public_about_path %>
+        </li>
+        <li>
+          <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+        </li>
+
+      <!--"ログインしている"-->
+      <% else %>
+        <li>
+          <%= link_to "Top", root_path %>
+        </li>
+        <li>
+          <%= link_to "マイページ", public_user_path(current_user.id) %>
+        </li>
+         <li>
+          <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+        </li>
+      <% end %>
+
     <% end %>
     </ul>
   </nav>

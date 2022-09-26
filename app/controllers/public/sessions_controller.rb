@@ -29,16 +29,8 @@ class Public::SessionsController < Devise::SessionsController
     return if !@user
     ## 取得したアカウントのパスワードと入力されたパスワードが一致してるかを判別
     if @user.valid_password?(params[:user][:password])
-      ## ここから以下ユーザーステータス(1..4)によって振り分ける
+      ## ここから以下ユーザーステータス(1..4)によって振り分ける(0は一般ユーザー)
       case User.statuses[@user.status]
-      ### 凍結解除申請書だった場合
-      when 1
-        flash.now[:notice] = "審議中です。"
-        render :new
-      ### 凍結されていた場合
-      when 2
-        flash.now[:notice] = "凍結中。解除申請はこちらから。"
-        redirect_to
       ### 永久凍結されていた場合
       when 3
         flash.now[:notice] = "アカウントは永久凍結されました。"

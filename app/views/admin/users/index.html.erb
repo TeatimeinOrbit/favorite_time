@@ -1,0 +1,17 @@
+<div class="admin_users_index_table_container">
+
+  <div class="admin_users_index_table">
+    <h2>通報された投稿があるユーザーのリスト</h2>
+    <table class="reported_users_table">
+      <%= render 'admin/users/list', users: @reported_users %>
+    </table>
+  </div>
+
+  <div class="admin_users_index_table">
+    <h2>凍結解除申請をしているユーザーのリスト</h2>
+    <table class="requesting_users_table">
+      <%= render 'admin/users/list', users: @requesting_users %>
+    </table>
+  </div>
+
+</div>

@@ -1,0 +1,17 @@
+<thead>
+  <tr>
+    <th class="admin_users_index_profile">会員ID</th>
+    <th class="admin_users_index_profile">プロフィール画像</th>
+    <th class="admin_users_index_profile">名前</th>
+  </tr>
+</thead>
+<tbody>
+  <% users.each do |user| %>
+    <tr>
+      <td>ID.<%= user.id %></td>
+      <td class="admin_users_index_profile_image img "><%= image_tag user.get_profile_image %></td>
+      <td class="admin_users_index_user_name"><%= user.name %></td>
+      <td class="admin_users_index_link"><%= link_to '投稿を確認する', admin_user_path(user.id) %></td>
+    </tr>
+  <% end %>
+</tbody>

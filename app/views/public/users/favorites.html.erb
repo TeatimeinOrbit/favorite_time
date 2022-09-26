@@ -1,5 +1,29 @@
-<h2>いいね一覧</h2>
+<h2 class="favorites_container_name">いいね一覧</h2>
 
-<% @favorites.each do |favorite| %>
-  <%= favorite.posted_content.title %>
-<% end %>
+<table class="content_index_table">
+  <% @favorites.each do |favorite| %>
+  <tbody>
+    <tr>
+      <td class="content_index_title"><%= favorite.posted_content.title %></td>
+    <tr>
+      <td class="content_index_category_name"><%= favorite.posted_content.category.name%></td>
+      <td class="content_index_time_of_day_name"><%= favorite.posted_content.time_of_day.name%></td>
+      <td class="content_index_user_name"><%= favorite.posted_content.user.name%></td>
+    </tr>
+    <% if favorite.posted_content.image.present? %>
+    <tr>
+      <td class="content_index_thum_box"><%= image_tag favorite.posted_content.image %></td>
+    </tr>
+    <% end %>
+    <tr>
+      <td class="content_index_sentence"><%= favorite.posted_content.sentence%></td>
+    </tr>
+    <td>
+    <!--CSSを使いリンクをかぶせる-->
+    <%= link_to public_posted_content_path(favorite.posted_content.id) do %>
+      <span class="content_index_over-link"></span>
+    <% end %>
+    </td>
+  </tbody>
+  <% end %>
+</table>

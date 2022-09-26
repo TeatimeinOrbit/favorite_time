@@ -1,7 +1,9 @@
 class Public::UsersController < ApplicationController
+  before_action :set_ransack_user, only: [:index, :search]
 
   def show
     @user = User.find(params[:id])
+    @posted_contents = PostedContent.where(user_id: @user.id)
   end
 
   def edit
@@ -10,7 +12,10 @@ class Public::UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    if @user.update(user_params)
+    if request.referer.include?("requesting")
+      @user.update(user_params)
+      redirect_to public_requesting_path
+    elsif  @user.update(user_params)
       redirect_to public_user_path(@user.id)
     else
       render :edit
@@ -34,10 +39,18 @@ class Public::UsersController < ApplicationController
     redirect_to root_path
   end
 
+  def search
+    @results = @q_user.result
+  end
+
   private
 
   def user_params
-    params.require(:user).permit(:name, :introduction, :profile_image, :header_image)
+    params.require(:user).permit(:name, :introduction, :profile_image, :header_image, :status)
+  end
+
+  def set_ransack_user
+    @q_user = User.ransack(params[:q])
   end
 
 

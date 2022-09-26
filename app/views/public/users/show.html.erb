@@ -1,23 +1,32 @@
+<!--ユーザーのプロフィール欄-->
+<div class="users_container">
 
+  <div>
+    <%= render 'public/users/profile', user: @user %>
+  </div>
+  <div class="users_followings_link">
+    <%= link_to 'フォロー', public_user_followings_path(@user.id) %>
+  </div>
+  <div class="users_followers_link">
+    <%= link_to 'フォロワー', public_user_followers_path(@user.id) %>
+  </div>
 
-  <%= image_tag @user.header_image %>
-
-  <%= image_tag @user.get_profile_image(200, 200) %>
-
-  <%= @user.name %></br>
-
-  <%= @user.introduction %>
+  <% if @user != current_user %>
+  <div class="users_follow_btn">
+    <%= render 'public/relationships/follow_btn', user: @user %>
+  </div>
+  <% end %>
 
   <% if @user.id == current_user.id %>
+  <div class="users_edit_profile">
     <%= link_to 'プロフィール編集', edit_public_user_path(current_user.id) %>
+  </div>
   <% end %>
 
-
-<div>
-  <% unless @user == current_user %>
-    <%= render 'public/relationships/follow_btn', user: @user %>
-  <% end %>
 </div>
 
-<%= User.statuses[@user.status] %>
 
+<!--ユーザーの投稿履歴-->
+<div>
+  <%= render 'public/posted_contents/list', posted_contents: @posted_contents %>
+</div>

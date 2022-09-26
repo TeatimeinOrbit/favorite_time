@@ -1,26 +1,61 @@
-<h1>show page</h1>
+<!--投稿詳細-->
+<table class="content_show_table">
+  <tbody>
+    <tr>
+      <td class="content_show_title">
+        <%= @posted_content.title %>
+      </td>
+    <tr class="content_show_profile_image_line">
+      <td class="content_show_profile_image">
+        <%= link_to public_user_path(@posted_content.user.id) do %>
+          <%= image_tag @posted_content.user.get_profile_image %>
+        <% end %>
+      </td>
+      <td class="content_show_user_name">
+        <%= link_to public_user_path(@posted_content.user.id) do %>
+          <%= @posted_content.user.name%>
+        <% end %>
+      </td>
+      <td class="content_show_category_name">
+        <%= @posted_content.category.name%>
+      </td>
+      <td class="content_show_time_of_day_name">
+        <%= @posted_content.time_of_day.name%>
+      </td>
+    </tr>
+    <% if @posted_content.image.present? %>
+    <tr>
+      <td class="content_show_thum_box">
+        <%= image_tag @posted_content.image %>
+      </td>
+    </tr>
+    <% end %>
+    <tr>
+      <td class="content_show_sentence">
+        <%= @posted_content.sentence%>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
-  <%= @posted_content.title %>
-  <%= @posted_content.time_of_day.name %>
-  <%= @posted_content.category.name %>
-  <%= @posted_content.user.name %>
-  <% if @posted_content.image.present? %>
-    <%= image_tag @posted_content.image %>
-  <% end %>
-  <%= @posted_content.sentence %>
-
-<% if @posted_content.user_id != current_user.id %>
+<% if @posted_content.user_id == current_user.id %>
+  <div>
+    <%= link_to '編集する', edit_public_posted_content_path(@posted_content.id) %>
+  </div>
+<% else %>
+  <!--いいねボタン-->
   <div id="favorite-btn_<%=@posted_content.id %>">
     <%= render 'public/favorites/favorite', posted_content: @posted_content %>
   </div>
+  <!--報告ボタン-->
+  <div>
+    <%= link_to '報告する', new_public_posted_content_report_path(@posted_content.id) %>
+  </div>
+  <!--コメント投稿フォーム-->
+  <div id="comment_form">
+    <%= render 'public/posted_comments/form', posted_content: @posted_content, posted_comment: @posted_comment %>
+  </div>
 <% end %>
-
-
-
-<!--コメント投稿フォーム-->
-<div id="comment_form">
-  <%= render 'public/posted_comments/form', posted_content: @posted_content, posted_comment: @posted_comment %>
-</div>
 
 <!--コメント一覧-->
 <div id="comments_index">

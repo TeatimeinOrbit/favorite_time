@@ -1,22 +1,38 @@
 <footer>
+  <!--ユーザーページのみ-->
+  <% if !request.path.include?("admin") %>
 
-  <!--Sign_in, Sign_up画面以外のログアウト状態-->
-  <% if !user_signed_in? && !request.path.include?("sign") %>
-    <%= link_to "検索できるよ", search_public_posted_contents_path %>
+    <!--Sign_in, Sign_up画面以外のログアウト状態-->
+    <% if !user_signed_in? && !request.path.include?("sign") && !request.path.include?("search") %>
+    <div class="footer_guest_search">
+      <%= link_to "検索できるよ", search_public_posted_contents_path %>
+    </div>
 
-  <!--Sign_in, Sign_up, edit画面では何も表示しない-->
-  <% elsif request.path.include?("sign") ||  request.path.include?("edit") %>
+    <!--Sign_in, Sign_up, edit画面, 検索画面では何も表示しない-->
+    <% elsif request.path.include?("sign") ||  request.path.include?("edit") || request.path.include?("search") %>
 
-  <!--"ログインしている" かつ "ユーザーマイページ"-->
-  <% elsif request.path.include?("/public/users/#{current_user.id}") %>
-    <%= link_to "新規投稿", new_public_posted_content_path %>
-    <%= link_to "検索", search_public_posted_contents_path %>
+    <!--"ログインしている" かつ "ユーザーマイページ"-->
+    <% elsif request.path.include?("/public/users/#{current_user.id}") %>
+    <div class="footer_my_page">
+      <div class="footer_my_page_post">
+        <%= link_to "新規投稿", new_public_posted_content_path %>
+      </div>
+      <div class="footer_my_page_search">
+        <%= link_to "検索", search_public_posted_contents_path %>
+      <div>
+    </div>
 
-  <!--"ユーザーマイページでも、編集ページでもないログイン状態"-->
-  <% else%>
-    <%= link_to "検索", search_public_posted_contents_path %>
-    <%= link_to "いいね一覧", favorites_public_user_path(current_user.id)%>
+    <!--"ユーザーマイページでも、編集ページでもないログイン状態"-->
+    <% else%>
+    <div class="footer_signed_in">
+      <div class="footer_signed_in_search">
+        <%= link_to "検索", search_public_posted_contents_path %>
+      </div>
+      <div class="footer_signed_in_favorite">
+        <%= link_to "いいね一覧", favorites_public_user_path(current_user.id) %>
+      </div>
+    </div>
+    <% end %>
 
   <% end %>
-
 </footer>
