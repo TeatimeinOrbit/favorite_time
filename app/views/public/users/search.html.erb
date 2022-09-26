@@ -1,17 +1,25 @@
-<!--ユーザー検索フォーム-->
-<%= search_form_for @q_user, url: search_public_users_path do |f| %>
-</div>
-  <%= f.text_field :name_cont %>
-<div>
-  <%= f.submit '検索' %>
-</div>
-<% end %>
-
-
 <div>
   <% @results.each do |result| %>
-    <%= link_to public_posted_content_path(result.id) do %>
-      <%= result.title %>
-    <% end %>
+     <table class="users_search_table">
+        <tbody>
+          <tr>
+            <td class="users_search_profile_image img">
+              <%= link_to public_user_path(result.id) do %>
+                <%= image_tag result.get_profile_image %>
+              <% end %>
+            </td>
+            <td class="users_search_user_name">
+              <%= link_to public_user_path(result.id) do %>
+                <%= result.name %>
+              <% end %>
+            </td>
+             <td class="users_search_user_introduction">
+              <%= link_to public_user_path(result.id) do %>
+                <%= result.introduction %>
+              <% end %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
   <% end %>
 </div>

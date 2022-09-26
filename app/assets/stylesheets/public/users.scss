@@ -8,6 +8,7 @@
   box-sizing: border-box;
 }
 
+/*showページここから*/
 .users_container {
   width: 100%;
   padding: 1px 1px 50px;
@@ -46,10 +47,37 @@
   margin-left: 10px;
 }
 
+.users_followings_link {
+  padding: 5px 0 20px;
+}
+
+.users_followings_link a {
+  text-decoration: none;
+  padding: 5px 0;
+  background-color: #5AC2D9;
+  color: white;
+  border-radius: 10%;
+}
+
+.users_followers_link {
+  padding-bottom: 20px;
+}
+
+.users_followers_link a {
+  text-decoration: none;
+  padding: 5px 0;
+  background-color: #5AC2D9;
+  color: white;
+  border-radius: 10%;
+}
+
+
+
 .users_follow_btn a {
   position: absolute;
   right: 10px;
   padding: 5px;
+  text-decoration: none;
   background-color: #5AC2D9;
   color: white;
   border-radius: 10%;
@@ -58,6 +86,7 @@
 .users_edit_profile a {
   color: #0066c0;
 }
+/*showページここまで*/
 
 
 /*ログインここから*/
@@ -84,3 +113,43 @@
   width: 260px;
 }
 /*Sign_upここまで*/
+
+/*ユーザー検索ページここから */
+
+.users_search_table {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.users_search_table tbody {
+  margin-left: 40px;
+}
+
+.users_search_profile_image img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.users_search_user_name {
+  padding-left: 10px;
+  font-weight: bold;
+}
+
+.users_search_user_name a {
+  text-decoration: none;
+  color: #0b1644;
+}
+
+.users_search_user_introduction {
+  padding-left: 10px;
+}
+
+.users_search_user_introduction a {
+  text-decoration: none;
+  color: #0b1644;
+}
+
+
+/*ユーザー検索ページここまで */

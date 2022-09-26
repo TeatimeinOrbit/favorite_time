@@ -1,9 +1,17 @@
 <!--ユーザーのプロフィール欄-->
 <div class="users_container">
 
-  <%= render 'public/users/profile', user: @user %>
+  <div>
+    <%= render 'public/users/profile', user: @user %>
+  </div>
+  <div class="users_followings_link">
+    <%= link_to 'フォロー', public_user_followings_path(@user.id) %>
+  </div>
+  <div class="users_followers_link">
+    <%= link_to 'フォロワー', public_user_followers_path(@user.id) %>
+  </div>
 
-  <% unless @user == current_user %>
+  <% if @user != current_user %>
   <div class="users_follow_btn">
     <%= render 'public/relationships/follow_btn', user: @user %>
   </div>
