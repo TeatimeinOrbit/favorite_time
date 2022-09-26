@@ -3,10 +3,11 @@
   <% if !request.path.include?("admin") %>
 
     <!--Sign_in, Sign_up画面以外のログアウト状態-->
-    <% if !user_signed_in? && !request.path.include?("sign") %>
+    <% if !user_signed_in? && !request.path.include?("sign") && !request.path.include?("search") %>
     <div class="footer_guest_search">
       <%= link_to "検索できるよ", search_public_posted_contents_path %>
     </div>
+
     <!--Sign_in, Sign_up, edit画面, 検索画面では何も表示しない-->
     <% elsif request.path.include?("sign") ||  request.path.include?("edit") || request.path.include?("search") %>
 
@@ -20,6 +21,7 @@
         <%= link_to "検索", search_public_posted_contents_path %>
       <div>
     </div>
+
     <!--"ユーザーマイページでも、編集ページでもないログイン状態"-->
     <% else%>
     <div class="footer_signed_in">
