@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   #before_action :authenticate_user!, except: [:top, :about,]
 
   before_action :authenticate_user!, if: :public_url, except: [:top, :about, :requesting, :search, :index, :list]
-  before_action :being_locked_out, except: [:top, :about, :requesting, :update, :search, :index, :list]
+  before_action :being_locked_out, except: [:top, :about, :requesting, :create, :update, :search, :index, :list]
 
   def admin_url
     request.fullpath.include?("/admin")
