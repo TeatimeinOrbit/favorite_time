@@ -12,6 +12,8 @@ class User < ApplicationRecord
   has_many :posted_comments, dependent: :destroy
   has_many :reports
 
+  validates :name, presence: true, length: { minimum: 1, maximum: 30 }
+
   # "フォローする", "フォローされる" の関係性
   has_many :relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
   has_many :reverse_of_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy

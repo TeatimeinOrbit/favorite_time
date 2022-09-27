@@ -1,3 +1,12 @@
+<% if @posted_content.errors.any? %>
+  あと<%= @posted_content.errors.count %>点、内容を埋めてください
+  <ul>
+    <% @posted_content.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
 <h2>投稿ページ</h2>
 
 <%= form_with model: @posted_content, url: public_posted_contents_path, method: :post do |f| %>
