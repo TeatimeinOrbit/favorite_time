@@ -14,6 +14,8 @@ class Public::PostedContentsController < ApplicationController
     if @posted_content.save
       redirect_to public_posted_content_path(@posted_content.id)
     else
+      @categories = Category.all
+      @time_of_days = TimeOfDay.all
       render :new
     end
   end
@@ -39,6 +41,8 @@ class Public::PostedContentsController < ApplicationController
     if @posted_content.update(posted_content_params)
       redirect_to public_posted_content_path(@posted_content.id)
     else
+      @categories = Category.all
+      @time_of_days = TimeOfDay.all
       render :edit
     end
   end

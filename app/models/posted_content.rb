@@ -9,6 +9,9 @@ class PostedContent < ApplicationRecord
 
   has_one_attached :image
 
+  validates :title, presence: true
+  validates :sentence, presence: true
+
   # すでに"いいね"しているかどうか判断するメソッド
   def favorited_by?(user)
     favorites.exists?(user_id: user.id)
