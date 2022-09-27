@@ -1,5 +1,5 @@
 <% if @posted_content.errors.any? %>
-  <strong><%= @posted_content.errors.count %>error prohibited this obj from being saved:</strong>
+  <strong><%= @posted_content.errors.count %>点、内容を埋めてください:</strong>
   <ul>
     <% @posted_content.errors.full_messages.each do |message| %>
       <li><%= message %></li>
