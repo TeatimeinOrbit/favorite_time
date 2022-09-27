@@ -2,8 +2,8 @@ class ApplicationController < ActionController::Base
   #before_action :authenticate_admin!, if: :admin_url
   #before_action :authenticate_user!, except: [:top, :about,]
 
-  before_action :authenticate_user!, if: :public_url, except: [:top, :about, :requesting]
-  before_action :being_locked_out, except: [:top, :about, :requesting, :update]
+  before_action :authenticate_user!, if: :public_url, except: [:top, :about, :requesting, :search, :index, :list]
+  before_action :being_locked_out, except: [:top, :about, :requesting, :update, :search, :index, :list]
 
   def admin_url
     request.fullpath.include?("/admin")
@@ -35,6 +35,7 @@ class ApplicationController < ActionController::Base
 
   protected
 
+  # "凍結中のユーザー"と"凍結解除申請中のユーザー"のページ遷移を制限するメソッド
   def being_locked_out
     if !request.path.include?("admin")
       if !request.path.include?("sign") && current_user.status == "locked_out"

@@ -1,19 +1,30 @@
-<% if users.exists? %>
-  <% users.each do |user| %>
-    <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-        </tr>
-      </thead>
-      <tboby>
-        <tr>
-          <td><%= image_tag user.get_profile_image(100, 100) %></td>
-          <td><%= user.name %></td>
-        </tr>
-      </tboby>
-    </table>
-  <% end %>
-<% else %>
-  <p>ユーザーはまだいません</p>
+<% if request.path.include?("followings") %>
+  <h2 class="relationships_index_container_name">フォローリスト</h2>
+<% elsif request.path.include?("followers") %>
+  <h2 class="relationships_index_container_name">フォローワー</h2>
 <% end %>
+
+<div class="relationships_index_container">
+  <% if users.exists? %>
+    <% users.each do |user| %>
+      <table class="relationships_index_table">
+        <tbody>
+          <tr>
+            <td class="relationships_index_profile_image img">
+              <%= link_to public_user_path(user.id) do %>
+                <%= image_tag user.get_profile_image %>
+              <% end %>
+            </td>
+            <td class="relationships_index_user_name">
+              <%= link_to public_user_path(user.id) do %>
+                <%= user.name %>
+              <% end %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    <% end %>
+  <% else %>
+    <p>ユーザーはまだいません</p>
+  <% end %>
+</div>

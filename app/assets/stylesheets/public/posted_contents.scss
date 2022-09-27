@@ -8,7 +8,7 @@
   box-sizing: border-box;
 }
 
-/*indexページ ここから*/
+/*indexページ ここから-----------------------*/
 .content_index_table {
   display: flex;
   justify-content: center;
@@ -59,13 +59,13 @@
   white-space: nowrap;
   justify-content:　start;
 }
-/*indexページ ここまで*/
+/*indexページ ここまで-----------------------------*/
 
 
 
 
 
-/*showページ ここから*/
+/*showページ ここから------------------------------*/
 .content_show_table {
   width: 100%;
   display: flex;
@@ -116,5 +116,142 @@
 .content_show_sentence {
   justify-content:　start;
 }
+/*showページ ここまで------------------------------------*/
 
-/*showページ ここまで*/
+
+
+/*searchページ ここから------------------------------------*/
+
+/*ユーザー検索フォームここから*/
+.user_search {
+  margin-top: 10px;
+  color: #24130d;
+  text-align: center;
+}
+
+.user_search_text input {
+  width: 250px;
+  height: 30px;
+  border: 2px solid #6e4f36;
+  border-radius: 5px;
+  margin: Z0px;
+}
+
+.user_search_action {
+  padding-top: 20px;
+  margin-bottom: 50px;
+}
+
+.user_search_action input {
+  padding: 5px 30px;
+}
+
+/*ユーザー検索フォームここまで*/
+
+
+.content_search {
+  color: #24130d;
+  text-align: center;
+}
+
+.content_search_container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.content_search_container p {
+  font-weight: bold;
+  font-size: 50px;
+  transform: scale(4, 1.5);
+  color: #4b2d16;
+}
+
+.content_search_category {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/*カテゴリーチェックボックスここから*/
+.content_search_category input[type=checkbox] {
+  display: none;
+}
+
+.content_search_category label:nth-child(1) {
+   display: none;
+}
+
+.content_search_category label {
+  border: 1px solid #692927;
+  margin: 10px;
+  display: block;
+  width: 100px;
+  height: 30px;
+  text-align: center;
+  border-radius: 5px;
+  font-weight: bold;
+  color: #542D24;
+}
+
+.content_search_category input[type=checkbox]:checked + label {
+  background-color: #80c8ef;
+  border: 1px solid #a0d8ef;
+  color: #24130d;
+}
+/*カテゴリーチェックボックスここまで*/
+
+
+.content_search_time_of_day {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10px 0 20px;
+}
+
+/*時間帯チェックボックスここから*/
+.content_search_time_of_day input[type=checkbox] {
+  display: none;
+}
+
+.content_search_time_of_day label:nth-child(1) {
+  display: none;
+}
+
+.content_search_time_of_day label {
+  border: 1px solid #692927;
+  margin: 10px;
+  display: block;
+  width: 100px;
+  height: 30px;
+  text-align: center;
+  border-radius: 1px;
+  font-weight: bold;
+  color: #542D24;
+}
+
+.content_search_time_of_day input[type=checkbox]:checked + label {
+  background-color: #ff7a5b;
+  border: 1px solid #f4ac92;
+  color: #0b1644;
+}
+/*時間帯チェックボックスここまで*/
+
+
+.content_search_text input {
+  width: 250px;
+  height: 30px;
+  border: 2px solid #6e4f36;
+  border-radius: 5px;
+  margin: 20px;
+}
+
+.content_search_action {
+  padding-top: 20px;
+  margin-bottom: 200px;
+}
+
+.content_search_action input {
+  padding: 5px 30px;
+}
+/*searchページ ここまで---------------------------------------*/

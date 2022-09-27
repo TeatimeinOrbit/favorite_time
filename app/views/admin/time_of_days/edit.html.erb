@@ -1,14 +1,15 @@
-<h2>時間帯編集</h2>
+<h2 class=admin_container_name>時間帯編集</h2>
+<div class="admin_container">
+  <!--時間帯の編集-->
+  <%= form_with model: @time_of_day, url: admin_time_of_day_path, method: :patch do |f| %>
+    <%= render 'form', time_of_day: @time_of_day, f: f %>
+  <% end %>
 
-<!--時間帯の編集-->
-<%= form_with model: @time_of_day, url: admin_time_of_day_path, method: :patch do |f| %>
-  <%= render 'form', time_of_day: @time_of_day, f: f %>
-<% end %>
+  <div>
+    <%= link_to "削除", admin_time_of_day_path(@time_of_day.id), method: :delete, data: {confrim: "本当に削除しますか"} %>
+  </div>
 
-<div>
-  <%= link_to "削除", admin_time_of_day_path(@time_of_day.id), method: :delete, data: {confrim: "本当に削除しますか"} %>
-</div>
-
-<div>
-  <%= link_to "戻る", admin_time_of_days_path %>
+  <div>
+    <%= link_to "戻る", admin_time_of_days_path %>
+  </div>
 </div>
